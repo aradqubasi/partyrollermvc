@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Players</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div th:if="${players != null}">
+        <h1>Players:</h1>
+        <ul>
+            <li th:each="player : *{players}">
+                <span th:text="${player.getUsername()}"></span>
+                <a href="#" data-th-href="@{'/player/edit/{id}'(id=${player.id})}">Edit</a>
+            </li>
+        </ul>
+    </div>
+    <div>
+        <a href="#" data-th-href="@{/player/new}">Add</a>
+    </div>
+</body>
+</html>
