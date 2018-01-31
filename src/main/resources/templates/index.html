@@ -6,7 +6,11 @@
 </head>
 <body>
 <p>Welcome</p>
-<a th:href="@{/players}">Show players</a>
+<ul>
+    <li><a th:href="@{/players}">Show players</a></li>
+    <li><a th:href="@{/parties}">Show parties</a></li>
+    <li><a th:href="@{/characters}">Show characters</a></li>
+</ul>
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Sign Out"/>
 </form>

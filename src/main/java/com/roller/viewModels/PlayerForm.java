@@ -57,7 +57,4 @@ public class PlayerForm {
         username = player.getUsername();
         password = player.getPassword();
     }
-
-//    private ArrayList<String> roles = new ArrayList<>();
-
 }

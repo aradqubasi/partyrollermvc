@@ -7,7 +7,7 @@ import java.util.Set;
 public class Party {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -24,18 +24,17 @@ public class Party {
     @OneToMany(mappedBy = "game")
     private Set<com.roller.domain.Character> characters;
 
-    protected Party() {
+    @OneToMany(mappedBy = "game")
+    private Set<Message> posts;
 
-    }
+    protected Party() { }
 
     public Party(String name, Player master) {
-
         this.name = name;
         this.master = master;
     }
 
-
-    public int getId() {
+    public Long getId() {
         return id;
     }
 

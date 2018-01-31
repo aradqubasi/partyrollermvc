@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit party</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:if="${form != null}">
+    <a th:href="@{'/board/{id}'(id=${form.getId()})}">Play</a>
+    <form action="#" th:action="@{'/party/edit/general/{id}'(id=${form.getId()})}" th:object="${form}" method="post">
+        <h1 th:text="${form.name} + ' by ' + ${form.master}"></h1>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" th:field="*{description}" /></td>
+                <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Email Error</td>
+            </tr>
+            <tr>
+                <td>Players:</td>
+                <td>
+                    <ul>
+                        <li th:each="player : *{players}">
+                            <span th:text="${player.value}"></span>
+                            <a href="#" data-th-href="@{'/party/edit/remove/player/{party}/{player}'(party=${form.getId()}, player=${player.key})}">Kick</a>
+                        </li>
+                        <li><input type="text" th:field="*{newPlayer}"/></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td>Characters:</td>
+                <td>
+                    <ul>
+                        <li th:each="character : *{characters}">
+                            <span th:text="${character.value}"></span>
+                            <a href="#" data-th-href="@{'/party/edit/remove/character/{party}/{character}'(party=${form.getId()}, character=${character.key})}">Kick</a>
+                        </li>
+                        <li><input type="text" th:field="*{newCharacter}"/></li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

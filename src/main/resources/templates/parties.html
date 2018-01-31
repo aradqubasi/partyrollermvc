@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Players</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:if="${parties != null}">
+    <h1>Parties:</h1>
+    <ul>
+        <li th:each="party : *{parties}">
+            <span th:text="${party.name}"></span>
+            <span> of </span>
+            <span th:text="${party.master.getUsername()}"></span>
+            <a href="#" data-th-href="@{'/party/edit/general/{id}'(id=${party.id})}">Edit</a>
+        </li>
+    </ul>
+</div>
+<div>
+    <a href="#" data-th-href="@{/party/new}">Add</a>
+</div>
+</body>
+</html>

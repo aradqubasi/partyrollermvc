@@ -8,12 +8,13 @@ public class Character {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
+    @Column(unique = true)
     private String name;
     private Integer passion;
     private Integer bliss;
     private Integer depression;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     private Player owner;
 
     @ManyToOne
@@ -78,11 +79,11 @@ public class Character {
         this.owner = owner;
     }
 
-    public Party getGame() {
-        return game;
-    }
+    public Party getGame() { return game; }
 
     public void setGame(Party game) {
         this.game = game;
     }
+
+    public Long getId() { return id; }
 }

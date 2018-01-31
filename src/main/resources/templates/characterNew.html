@@ -5,8 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<form action="#" th:action="@{'/character/{id}'(id=${form.id})}" th:object="${form}" method="post">
-    <h1>Edit player</h1>
+<form action="#" th:action="@{/character/new}" th:object="${form}" method="post">
+    <h1>New character</h1>
     <table>
         <tr>
             <td>Name:</td>
@@ -28,12 +28,10 @@
             <td><input type="number" th:field="*{depression}" /></td>
             <td th:if="${#fields.hasErrors('depression')}" th:errors="*{depression}">Depression Error</td>
         </tr>
-
         <tr>
             <td><button type="submit">Submit</button></td>
         </tr>
     </table>
 </form>
-<a href="#" data-th-href="@{'/character/delete/{id}'(id=${form.id})}">Delete</a>
 </body>
 </html>

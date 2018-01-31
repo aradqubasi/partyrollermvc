@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>New party</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:if="${form != null}">
+    <form action="#" th:action="@{/party/new}" th:object="${form}" method="post">
+        <h1 th:text="'New party by ' + ${form.master}"></h1>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" th:field="*{name}" /></td>
+                <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td><input type="text" th:field="*{description}" /></td>
+                <td th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Email Error</td>
+            </tr>
+            <tr>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -28,13 +28,6 @@ public class PlayerController {
         return "players";
     }
 
-//    @GetMapping("/player/view/{id}")
-//    public String player(@PathVariable("id") long id, Model model) {
-//        String username = playerRepository.findOne(id).getUsername();
-//        model.addAttribute("username", username);
-//        return "player";
-//    }
-
     @GetMapping("/player/new")
     public String player(PlayerForm playerForm) {
         return "playerNew";
@@ -83,11 +76,5 @@ public class PlayerController {
             return "redirect:/players";
         }
     }
-
-//    @DeleteMapping("/player/delete/{id}")
-//    public String player(@PathVariable("id") long id) {
-//        playerRepository.delete(id);
-//        return "redirect:/players";
-//    }
 
 }

@@ -32,6 +32,9 @@ public class Player {
     @ManyToMany
     private Set<Party> games = new HashSet<>();
 
+    @OneToMany(mappedBy = "author")
+    private Set<Message> posts;
+
     protected Player() {
 
     }
@@ -94,7 +97,7 @@ public class Player {
     @Override
     public String toString() {
         return String.format(
-                "Customer[id=%d, name='%s', passion='%d', bliss='%d', depression='%d']",
-                id, username, characters == null ? 0 : characters.size());
+                "Customer[id=%d, name='%s']",
+                id, username);
     }
 }

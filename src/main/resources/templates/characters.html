@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Characters</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div th:if="${characters != null}">
+    <h1>Characters:</h1>
+    <ul>
+        <li th:each="character : *{characters}">
+            <span th:text="${character.name}"></span>
+            <span> of </span>
+            <span th:if="${character.owner != null}" th:text="${character.owner.username}"></span>
+            <span th:if="${character.game != null}" th:text="${character.game.name}"></span>
+            <a href="#" data-th-href="@{'/character/{id}'(id=${character.id})}">Edit</a>
+            <a href="#" data-th-href="@{'/character/delete/{id}'(id=${character.id})}">Delete</a>
+        </li>
+    </ul>
+</div>
+<div>
+    <a href="#" data-th-href="@{/character/new}">Add</a>
+</div>
+</body>
+</html>
